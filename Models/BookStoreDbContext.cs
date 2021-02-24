@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Assignment5.Models
+namespace Assignment6.Models
 {
     public class BookStoreDbContext : DbContext
     {

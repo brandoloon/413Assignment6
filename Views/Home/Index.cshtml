@@ -1,11 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model IQueryable<Book>
+@model BookListViewModel
 
 <div class="text-center">
     <h1 class="display-4">Welcome to the Bookstore</h1>
-    <table class="table">
+    <table class="table table-dark text-white table-striped table-bordered">
         <thead>
             <tr>
                 <th>
@@ -26,10 +26,13 @@
                 <th>
                     Price
                 </th>
+                <th>
+                    Pages
+                </th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Books)
             {
                 <tr>
                     <td>
@@ -50,8 +53,20 @@
                     <td>
                         $@Html.DisplayFor(modelItem => item.Price)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pages)
+                    </td>
                 </tr>
             }
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7" page-model="@Model.PagingInfo" page-action="Index" 
+                    page-classes-enabled="true" page-class="btn text-white"
+                    page-class-selected="btn-light text-dark" 
+                    page-class-normal="btn-dark text-white" class="text-right"></td>
+            </tr>
+        </tfoot>
+        
     </table>
 </div>
