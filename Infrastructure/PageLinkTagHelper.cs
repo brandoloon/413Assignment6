@@ -34,11 +34,13 @@ namespace Assignment6.Infrastructure
         {
             IUrlHelper urlHelper = UrlHelperFactory.GetUrlHelper(ViewContext);
             TagBuilder builder = new TagBuilder("td");
+            // add div for the btn-group tag
             TagBuilder btnGroup = new TagBuilder("div");
             btnGroup.AddCssClass("btn-group");
             
             for (int i = 1; i <= PageModel.TotalPages; i++)
             {
+                // add each page number
                 TagBuilder tag = new TagBuilder("a");
                 tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
                 if (PageClassesEnabled)
@@ -48,6 +50,7 @@ namespace Assignment6.Infrastructure
                 }
                 tag.InnerHtml.Append(i.ToString());
 
+                // add page tags to btnGroup
                 btnGroup.InnerHtml.AppendHtml(tag);
             }
             builder.InnerHtml.AppendHtml(btnGroup);

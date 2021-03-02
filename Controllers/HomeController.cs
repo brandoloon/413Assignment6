@@ -28,6 +28,7 @@ namespace Assignment6.Controllers
         {
             return View(new BookListViewModel
             {
+                // sends books by 
                 Books = _repository.Books
                 .OrderBy(b => b.BookId)
                 .Skip((page - 1) * ITEMS_PER_PAGE)
