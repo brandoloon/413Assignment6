@@ -28,7 +28,7 @@ namespace Assignment6.Controllers
         {
             return View(new BookListViewModel
             {
-                // sends books by 
+                // populate books list for display
                 Books = _repository.Books
                 .Where(b => category == null || b.Category == category)
                 .OrderBy(b => b.BookId)

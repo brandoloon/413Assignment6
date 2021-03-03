@@ -18,6 +18,7 @@ namespace Assignment6.Components
         {
             ViewBag.CurrentCategory = RouteData?.Values["category"];
 
+            // filter by category
             return View(repo.Books
                 .Select(x => x.Category)
                 .Distinct()
