@@ -11,6 +11,7 @@ namespace Assignment6.Pages
 {
     public class CartModel : PageModel
     {
+        // Razor page model
         private IBookStoreRepository repository;
         public CartModel(IBookStoreRepository repo, Cart cartService)
         {
@@ -21,17 +22,20 @@ namespace Assignment6.Pages
         public string ReturnUrl { get; set; }
         public void OnGet(string returnUrl)
         {
+            // get cart method
             ReturnUrl = returnUrl ?? "/";
         }
 
         public IActionResult OnPost(long bookId, string returnUrl)
         {
+            // add item to cart post method
             Book book = repository.Books.FirstOrDefault(b => b.BookId == bookId);
             Cart.AddItem(book);
             return RedirectToPage(new { returnUrl = returnUrl });
         }
         public IActionResult OnPostRemove(long bookId, string returnUrl)
         {
+            // remove line item from cart post method
             Cart.RemoveLine(Cart.Lines.First(c =>
             c.Book.BookId == bookId).Book);
             return RedirectToPage(new { returnUrl = returnUrl });

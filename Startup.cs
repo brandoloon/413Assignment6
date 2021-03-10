@@ -34,9 +34,10 @@ namespace Assignment6
             });
 
             services.AddScoped<IBookStoreRepository, EFBookStoreRepository>();
-
+            // razor pages
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
+            // session cart services
             services.AddSession();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -86,7 +87,7 @@ namespace Assignment6
                 );
 
                 endpoints.MapDefaultControllerRoute();
-
+                // import razor page endpoints
                 endpoints.MapRazorPages();
             });
 

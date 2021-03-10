@@ -7,6 +7,7 @@ namespace Assignment6.Models
 {
     public class Cart
     {
+        // base cart class
         public List<CartLine> Lines { get; set; } = new List<CartLine>();
 
         public virtual void AddItem(Book book, int quantity = 1)
@@ -37,7 +38,7 @@ namespace Assignment6.Models
 
         public double ComputeTotalSum() => Lines.Sum(e => e.Book.Price * e.Quantity);
         
-        public class CartLine
+        public class CartLine // cart line items
         {
             public int CartLineID { get; set; }
             public Book Book { get; set; }
