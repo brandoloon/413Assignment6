@@ -29,39 +29,18 @@
                 <th>
                     Pages
                 </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Books)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Author)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Publisher)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ISBN)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Classification), @Html.DisplayFor(modelItem => item.Category)
-                    </td>
-                    <td>
-                        $@Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Pages)
-                    </td>
-                </tr>
+                <partial name="BookDetail" model="item" />
             }
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="7" page-model="@Model.PagingInfo" page-action="Index" 
+                <td colspan="8" page-model="@Model.PagingInfo" page-action="Index" 
                     page-classes-enabled="true" page-class="btn text-white"
                     page-class-selected="btn-light text-dark" 
                     page-class-normal="btn-dark text-white" 

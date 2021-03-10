@@ -46,7 +46,7 @@ namespace Assignment6.Models
                     },
                     new Book
                     {
-                        Title = "the Snowball",
+                        Title = "The Snowball",
                         Author = "Alice Schroeder",
                         Publisher = "Bantam",
                         ISBN = "978-0553384611",
