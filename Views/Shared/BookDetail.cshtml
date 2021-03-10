@@ -1,0 +1,31 @@
+﻿@model Book
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Author)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Publisher)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ISBN)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Classification), @Html.DisplayFor(modelItem => Model.Category)
+    </td>
+    <td>
+        $@Html.DisplayFor(modelItem => Model.Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Pages)
+    </td>
+    <td>
+        <form id="@Model.BookId" asp-page="/Cart" method="post">
+            <input type="hidden" asp-for="BookId" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+            <input type="submit" value="Add To Cart" class="btn-success btn-sm pull-right" />
+        </form>
+    </td>
+</tr>

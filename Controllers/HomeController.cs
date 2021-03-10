@@ -24,7 +24,7 @@ namespace Assignment6.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             return View(new BookListViewModel
             {
@@ -32,11 +32,11 @@ namespace Assignment6.Controllers
                 Books = _repository.Books
                 .Where(b => category == null || b.Category == category)
                 .OrderBy(b => b.BookId)
-                .Skip((page - 1) * ITEMS_PER_PAGE)
+                .Skip((pageNum - 1) * ITEMS_PER_PAGE)
                 .Take(ITEMS_PER_PAGE),
                 PagingInfo = new PagingInfo
                 {
-                    CurrentPage = page,
+                    CurrentPage = pageNum,
                     ItemsPerPage = ITEMS_PER_PAGE,
                     TotalItems = category == null ? _repository.Books.Count() :
                         _repository.Books.Where(x=> x.Category == category).Count()
